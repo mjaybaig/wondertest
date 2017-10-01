@@ -3,15 +3,26 @@
 @{
     ViewData["Title"] = "DashboardView";
 }
-
-<h2>DashboardView</h2>
-
-    <div class="container">
-         @Html.Partial("_chart", Model.DataPoints)
-   </div>
-    <div class="container">
-        @Html.Partial("_user", Model.User)
-    </div>
-    <div class="container">
+<div class="row">
+    <div class="col-md-12">
         @Html.Partial("_status", Model.Status)
     </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.Partial("_chart", Model.DataPoints)
+    </div>
+    <div class="col-md-6">
+        @Html.Partial("_user", Model.User)
+    </div>
+</div>
+
+
+
+<style type="text/css">
+    .chart{
+        width:100%;
+    }
+</style>
+
+

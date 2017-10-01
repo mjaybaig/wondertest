@@ -1,13 +1,13 @@
 @model IEnumerable<Wondertree.Models.KeyValuePair>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<p>helo</p><div id="chart_div" height="150"></div>
+<div id="chart_div" class="chart"></div>
 
 
 <script type="text/javascript">
     google.charts.load('current', { packages: ['corechart', 'bar'] });
-    google.charts.setOnLoadCallback(drawMaterial);
+    google.charts.setOnLoadCallback(drawchart);
 
-    function drawMaterial() {
+    function drawchart() {
         var years = [];
         var info = [];
         @foreach(var d in Model)
@@ -39,10 +39,16 @@
             vAxis: {
                 title: 'Value'
             },
+            height: 250,
             bar: { groupWidth: "25%" },
-            height: 300
         };
         var materialChart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         materialChart.draw(data, materialOptions);
     }
+    //$(window).resize(function () {
+    //    drawchart();
+    //});
+    $(window).resize(setInterval(
+        () => drawMaterial(), 1000)
+    )
 </script>

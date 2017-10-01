@@ -1,8 +1,8 @@
 @model Wondertree.Models.User
 
-<div>
     <h4>User</h4>
     <hr />
+<div class="row">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -23,8 +23,4 @@
             @Html.DisplayFor(model => model.LastUpdate)
         </dd>
     </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
 </div>
