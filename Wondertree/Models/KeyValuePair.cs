@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Wondertree.Models
 {
-    public class User
+    public class KeyValuePair
     {
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public DateTime LastUpdate { get; set; }
+        //[Display(Name ="Value")]
+        public int Info { get; set; }
+        //[Display(Name ="Key")]
+        public DateTime DateTime { get; set; }
     }
 }

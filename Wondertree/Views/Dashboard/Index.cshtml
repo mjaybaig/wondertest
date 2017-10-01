@@ -1,8 +1,17 @@
+@model Wondertree.Models.Dashboard
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "DashboardView";
 }
 
+<h2>DashboardView</h2>
 
-<h2>Index</h2>
-<p>@ViewData["checkstatus"]</p>
+    <div class="container">
+         @Html.Partial("_chart", Model.DataPoints)
+   </div>
+    <div class="container">
+        @Html.Partial("_user", Model.User)
+    </div>
+    <div class="container">
+        @Html.Partial("_status", Model.Status)
+    </div>

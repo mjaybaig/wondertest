@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Wondertree.Models;
+using Newtonsoft.Json;
 
 namespace Wondertree.Controllers
 {
@@ -15,20 +17,25 @@ namespace Wondertree.Controllers
     {
         public IActionResult Index()
         {
+            Dashboard db = new Dashboard();
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://wondertreetest.azurewebsites.net");
                 MediaTypeWithQualityHeaderValue contentType = new MediaTypeWithQualityHeaderValue("application/json");
                 client.DefaultRequestHeaders.Accept.Add(contentType);
+                               
 
-                HttpResponseMessage response =  client.GetAsync("/api/test/checkstatus").Result;
-                string checkstatus = response.Content.ReadAsStringAsync().Result;
-                ViewData["checkstatus"] = checkstatus;
-                response = client.GetAsync("/api/test/getuser").Result;
-                ViewData["user"] = response.Content.ReadAsStringAsync().Result;
-                //List<Customer> data = JsonConvert.DeserializeObject<List<Customer>>(stringData);
-                return View();
+                ICollection<KeyValuePair> datapoints = JsonConvert.DeserializeObject<ICollection<KeyValuePair>>(GetResponse(client, "/api/test/makegraph"));
+                db.DataPoints = datapoints;
+
+                string userstring = GetResponse(client, "/api/test/getuser");
+                User user = JsonConvert.DeserializeObject<User>(userstring);
+                db.User = user;
+
+                Status status = JsonConvert.DeserializeObject<Status>(GetResponse(client, "/api/test/checkstatus"));
+                db.Status = status;
             }
+            return View(db);
         }
         // GET: api/Dashboard
         //[HttpGet]
@@ -60,6 +67,19 @@ namespace Wondertree.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        private string GetResponse(HttpClient client, string uri)
+        {
+            HttpResponseMessage response;
+            string checkstatus;
+            do
+            {
+                response = client.GetAsync(uri).Result;
+                checkstatus = response.Content.ReadAsStringAsync().Result;
+            } while (!response.IsSuccessStatusCode);
+
+            return checkstatus;
         }
     }
 }
