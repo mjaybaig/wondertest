@@ -11,8 +11,6 @@ using Newtonsoft.Json;
 
 namespace Wondertree.Controllers
 {
-    [Produces("application/json")]
-    [Route("Dashboard")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
