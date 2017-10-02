@@ -12,16 +12,17 @@
         var info = [];
         @foreach(var d in Model)
         {
-            @:years.push("@d.DateTime");
+            @:years.push(new Date(@d.DateTime.Year, @d.DateTime.Month, @d.DateTime.Day))
             @:info.push(@d.Info);
         }
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'years');
+        data.addColumn('date', 'years');
         data.addColumn('number', 'info');
 
         for (i = 0; i < years.length; i++)
             data.addRow([years[i], info[i]]);
 
+        data.sort([{ column: 0 }]);
         console.log(data);
         //var data = google.visualization.arrayToDataTable([
         //    ['City', '2010 Population', '2000 Population'],
@@ -42,7 +43,7 @@
             height: 250,
             bar: { groupWidth: "25%" },
         };
-        var materialChart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var materialChart = new google.visualization.LineChart(document.getElementById('chart_div'));
         materialChart.draw(data, materialOptions);
     }
     //$(window).resize(function () {
