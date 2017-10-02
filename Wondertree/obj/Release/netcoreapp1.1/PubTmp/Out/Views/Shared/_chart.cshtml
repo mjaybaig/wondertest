@@ -1,0 +1,54 @@
+@model IEnumerable<Wondertree.Models.KeyValuePair>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="chart_div" class="chart"></div>
+
+
+<script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawchart);
+
+    function drawchart() {
+        var years = [];
+        var info = [];
+        @foreach(var d in Model)
+        {
+            @:years.push("@d.DateTime");
+            @:info.push(@d.Info);
+        }
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'years');
+        data.addColumn('number', 'info');
+
+        for (i = 0; i < years.length; i++)
+            data.addRow([years[i], info[i]]);
+
+        console.log(data);
+        //var data = google.visualization.arrayToDataTable([
+        //    ['City', '2010 Population', '2000 Population'],
+        //    ['New York City, NY', 8175000, 8008000],
+        //    ['Los Angeles, CA', 3792000, 3694000],
+        //    ['Chicago, IL', 2695000, 2896000],
+        //    ['Houston, TX', 2099000, 1953000],
+        //    ['Philadelphia, PA', 1526000, 1517000]
+        //]);
+        var materialOptions = {
+            title: 'Make Graph',
+            hAxis: {
+                title: 'Date'
+            },
+            vAxis: {
+                title: 'Value'
+            },
+            height: 250,
+            bar: { groupWidth: "25%" },
+        };
+        var materialChart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        materialChart.draw(data, materialOptions);
+    }
+    //$(window).resize(function () {
+    //    drawchart();
+    //});
+    $(window).resize(setInterval(
+        () => drawMaterial(), 1000)
+    )
+</script>

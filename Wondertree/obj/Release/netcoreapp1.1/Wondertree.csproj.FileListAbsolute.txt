@@ -1,0 +1,10 @@
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\bin\Release\netcoreapp1.1\Wondertree.deps.json
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\bin\Release\netcoreapp1.1\Wondertree.runtimeconfig.json
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\bin\Release\netcoreapp1.1\Wondertree.runtimeconfig.dev.json
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\bin\Release\netcoreapp1.1\Wondertree.dll
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\bin\Release\netcoreapp1.1\Wondertree.pdb
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\obj\Release\netcoreapp1.1\Wondertree.csproj.CoreCompileInputs.cache
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\obj\Release\netcoreapp1.1\Wondertree.AssemblyInfo.cs
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\obj\Release\netcoreapp1.1\Wondertree.dll
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\obj\Release\netcoreapp1.1\Wondertree.pdb
+C:\Users\Jameel.Baig\Source\Repos\wondertest2\Wondertree\obj\Release\netcoreapp1.1\Wondertree.csprojResolveAssemblyReference.cache
